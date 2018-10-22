@@ -1,0 +1,6 @@
+/bin
+.hg/
+.idea
+.classpath
+.hgignore
+07_01_FormelradBaseProject.iml
