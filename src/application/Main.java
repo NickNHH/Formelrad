@@ -34,67 +34,67 @@ public class Main extends Application {
 			imageView.setPreserveRatio(true);
 			root.getChildren().add(imageView);
 
-			Label lbleistung = new Label("Leistung:");
-			lbleistung.relocate(10, 285);
-			lbleistung.setFont(Font.font(15));
-			root.getChildren().add(lbleistung);
+			Label lbPower = new Label("Leistung:");
+			lbPower.relocate(10, 285);
+			lbPower.setFont(Font.font(15));
+			root.getChildren().add(lbPower);
 
-			TextField txLeistung = new TextField();
-			txLeistung.relocate(100, 285);
-			txLeistung.setFont(Font.font("Verdana", 15));
-			root.getChildren().add(txLeistung);
+			TextField tfPower = new TextField();
+			tfPower.relocate(100, 285);
+			tfPower.setFont(Font.font("Verdana", 15));
+			root.getChildren().add(tfPower);
 
-			Label lblSpannung = new Label("Spannung:");
-			lblSpannung.relocate(10, 325);
-			lblSpannung.setFont(Font.font(15));
-			root.getChildren().add(lblSpannung);
+			Label lbTension = new Label("Spannung:");
+			lbTension.relocate(10, 325);
+			lbTension.setFont(Font.font(15));
+			root.getChildren().add(lbTension);
 
-			TextField txSpannung = new TextField();
-			txSpannung.relocate(100, 325);
-			txSpannung.setFont(Font.font("Verdana", 15));
-			root.getChildren().add(txSpannung);
+			TextField tfTension = new TextField();
+			tfTension.relocate(100, 325);
+			tfTension.setFont(Font.font("Verdana", 15));
+			root.getChildren().add(tfTension);
 
-			Label lblStrom = new Label("Strom:");
-			lblStrom.relocate(10, 365);
-			lblStrom.setFont(Font.font(15));
-			root.getChildren().add(lblStrom);
+			Label lbCurrent = new Label("Strom:");
+			lbCurrent.relocate(10, 365);
+			lbCurrent.setFont(Font.font(15));
+			root.getChildren().add(lbCurrent);
 
-			TextField txStrom = new TextField();
-			txStrom.relocate(100, 365);
-			txStrom.setFont(Font.font("Verdana", 15));
-			root.getChildren().add(txStrom);
+			TextField tfCurrent = new TextField();
+			tfCurrent.relocate(100, 365);
+			tfCurrent.setFont(Font.font("Verdana", 15));
+			root.getChildren().add(tfCurrent);
 
-			Label lblWiderstand = new Label("Widerstand:");
-			lblWiderstand.relocate(10, 405);
-			lblWiderstand.setFont(Font.font(15));
-			root.getChildren().add(lblWiderstand);
+			Label lbResistance = new Label("Widerstand:");
+			lbResistance.relocate(10, 405);
+			lbResistance.setFont(Font.font(15));
+			root.getChildren().add(lbResistance);
 
-			TextField txWiderstand = new TextField();
-			txWiderstand.relocate(100, 405);
-			txWiderstand.setFont(Font.font("Verdana", 15));
-			root.getChildren().add(txWiderstand);
+			TextField tfResistance = new TextField();
+			tfResistance.relocate(100, 405);
+			tfResistance.setFont(Font.font("Verdana", 15));
+			root.getChildren().add(tfResistance);
 
-			Button btnBerechnen = new Button();
-			btnBerechnen.relocate(100, 445);
-			btnBerechnen.setText("Berechnen");
-			root.getChildren().add(btnBerechnen);
+			Button btCalculate = new Button();
+			btCalculate.relocate(100, 445);
+			btCalculate.setText("Berechnen");
+			root.getChildren().add(btCalculate);
 			
-			btnBerechnen.setOnAction(e -> {
+			btCalculate.setOnAction(e -> {
 				double power = 0.0;
 				double tension = 0.0;
 				double current = 0.0;
 				double resistence = 0.0;
-				if(!txLeistung.getText().isEmpty()) {
-					power = Double.parseDouble(txLeistung.getText());
+				if(!tfPower.getText().isEmpty()) {
+					power = Double.parseDouble(tfPower.getText());
 				}
-				if(!txSpannung.getText().isEmpty()) {
-					tension = Double.parseDouble(txSpannung.getText());
+				if(!tfTension.getText().isEmpty()) {
+					tension = Double.parseDouble(tfTension.getText());
 				}
-				if(!txStrom.getText().isEmpty()) {
-					current = Double.parseDouble(txStrom.getText());
+				if(!tfCurrent.getText().isEmpty()) {
+					current = Double.parseDouble(tfCurrent.getText());
 				}
-				if(!txWiderstand.getText().isEmpty()) {
-					resistence = Double.parseDouble(txWiderstand.getText());
+				if(!tfResistance.getText().isEmpty()) {
+					resistence = Double.parseDouble(tfResistance.getText());
 				}
 				Calculator myCalculator = new Calculator(
 						power, tension, current, resistence);
@@ -104,10 +104,10 @@ public class Main extends Application {
 				System.out.print("Nachher: ");
 				System.out.println(myCalculator.toString());
 					
-				txLeistung.setText(Double.toString(myCalculator.getLeistung()));
-				txSpannung.setText(Double.toString(myCalculator.getSpannung()));
-				txStrom.setText(Double.toString(myCalculator.getStrom()));
-				txWiderstand.setText(Double.toString(myCalculator.getWiderstand()));
+				tfPower.setText(Double.toString(myCalculator.getLeistung()));
+				tfTension.setText(Double.toString(myCalculator.getSpannung()));
+				tfCurrent.setText(Double.toString(myCalculator.getStrom()));
+				tfResistance.setText(Double.toString(myCalculator.getWiderstand()));
 			});
 
 			Scene scene = new Scene(root, 330, 490);
