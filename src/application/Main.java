@@ -83,7 +83,7 @@ public class Main extends Application {
 				double power = 0.0;
 				double tension = 0.0;
 				double current = 0.0;
-				double resistence = 0.0;
+				double resistance = 0.0;
 				if(!tfPower.getText().isEmpty()) {
 					power = Double.parseDouble(tfPower.getText());
 				}
@@ -94,10 +94,10 @@ public class Main extends Application {
 					current = Double.parseDouble(tfCurrent.getText());
 				}
 				if(!tfResistance.getText().isEmpty()) {
-					resistence = Double.parseDouble(tfResistance.getText());
+					resistance = Double.parseDouble(tfResistance.getText());
 				}
 				Calculator myCalculator = new Calculator(
-						power, tension, current, resistence);
+						power, tension, current, resistance);
 				System.out.print("Vorher:  ");
 				System.out.println(myCalculator.toString());
 				myCalculator.calculate();
