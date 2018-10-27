@@ -84,16 +84,16 @@ public class Main extends Application {
 				double tension = 0.0;
 				double current = 0.0;
 				double resistence = 0.0;
-				if(txLeistung.getText().isEmpty()==false) {
+				if(!txLeistung.getText().isEmpty()) {
 					power = Double.parseDouble(txLeistung.getText());
 				}
-				if(txSpannung.getText().isEmpty()==false) {
+				if(!txSpannung.getText().isEmpty()) {
 					tension = Double.parseDouble(txSpannung.getText());
 				}
-				if(txStrom.getText().isEmpty()==false) {
+				if(!txStrom.getText().isEmpty()) {
 					current = Double.parseDouble(txStrom.getText());
 				}
-				if(txWiderstand.getText().isEmpty()==false) {
+				if(!txWiderstand.getText().isEmpty()) {
 					resistence = Double.parseDouble(txWiderstand.getText());
 				}
 				Calculator myCalculator = new Calculator(
