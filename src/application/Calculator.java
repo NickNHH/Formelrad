@@ -1,49 +1,49 @@
 package application;
 
 /**
- * Berechnet das Formelrad
+ * Calculates the formula wheel
  * @author Peter Rutschmann
  * @version 13.09.2018
  */
 public class Calculator {
-	private double leistung;
-	private double spannung;
-	private double strom;
-	private double widerstand;
+	private double power;
+	private double tension;
+	private double current;
+	private double resistance;
 	
-	public Calculator(double leistung, double spannung, double strom, double widerstand) {
+	Calculator(double power, double tension, double current, double resistance) {
 		super();
-		this.leistung = leistung;
-		this.spannung = spannung;
-		this.strom = strom;
-		this.widerstand = widerstand;
+		this.power = power;
+		this.tension = tension;
+		this.current = current;
+		this.resistance = resistance;
 	}
 	
-	public double getLeistung() {
-		return leistung;
+	double getPower() {
+		return power;
 	}
 	
-	public double getSpannung() {
-		return spannung;
+	double getTension() {
+		return tension;
 	}
 
-	public double getStrom() {
-		return strom;
+	double getCurrent() {
+		return current;
 	}
 
-	public double getWiderstand() {
-		return widerstand;
+	double getResistance() {
+		return resistance;
 	}
 
 	@Override
 	public String toString() {
-		return "Calculator [leistung=" + leistung + 
-				", spannung=" + spannung + 
-				", strom=" + strom + 
-				", widerstand="	+ widerstand + "]";
+		return "Calculator [power=" + power +
+				", tension=" + tension +
+				", current=" + current +
+				", resistance="	+ resistance + "]";
 	}
 
-	public void calculate() {
+	void calculate() {
 		/* Hier auf Grund der vorhanden Werte entscheiden
 		 * welche Methode unten aufgerufen werden muss.
 		 */

@@ -14,7 +14,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
 
 /**
- * Formelrad Application
+ * Formula wheel Application
  * @author Peter Rutschmann
  * @version 22.10.2018
  */
@@ -104,10 +104,10 @@ public class Main extends Application {
 				System.out.print("Nachher: ");
 				System.out.println(myCalculator.toString());
 					
-				tfPower.setText(Double.toString(myCalculator.getLeistung()));
-				tfTension.setText(Double.toString(myCalculator.getSpannung()));
-				tfCurrent.setText(Double.toString(myCalculator.getStrom()));
-				tfResistance.setText(Double.toString(myCalculator.getWiderstand()));
+				tfPower.setText(Double.toString(myCalculator.getPower()));
+				tfTension.setText(Double.toString(myCalculator.getTension()));
+				tfCurrent.setText(Double.toString(myCalculator.getCurrent()));
+				tfResistance.setText(Double.toString(myCalculator.getResistance()));
 			});
 
 			Scene scene = new Scene(root, 330, 490);
