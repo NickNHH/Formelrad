@@ -45,13 +45,18 @@ public class Calculator {
     }
 
     void calculate() {
-        /* Hier auf Grund der vorhanden Werte entscheiden
-         * welche Methode unten aufgerufen werden muss.
-         */
+        power = calculatePower(tension, current, resistance);
     }
 
-    double calculatePower(int tension, int current) {
-        //Calculate
-        return power;
+    private double calculatePower(double tension, double current, double resistance) {
+        if (resistance == 0.0) {
+            return power = tension * current;
+        }
+        if (tension == 0.0) {
+            return power = resistance * (current * current);
+        }
+        else {
+            return power = (tension * tension) / resistance;
+        }
     }
 }
