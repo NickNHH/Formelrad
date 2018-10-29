@@ -45,18 +45,20 @@ public class Calculator {
     }
 
     void calculate() {
-        power = calculatePower(tension, current, resistance);
+        if (power == 0.0) {
+            calculatePower(tension, current, resistance);
+        }
     }
 
-    private double calculatePower(double tension, double current, double resistance) {
+    private void calculatePower(double tension, double current, double resistance) {
         if (resistance == 0.0) {
-            return power = tension * current;
+            power = tension * current;
         }
         if (tension == 0.0) {
-            return power = resistance * (current * current);
+            power = resistance * (current * current);
         }
         else {
-            return power = (tension * tension) / resistance;
+            power = (tension * tension) / resistance;
         }
     }
 }
