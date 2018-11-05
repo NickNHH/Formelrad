@@ -2,7 +2,6 @@ package application;
 
 /**
  * Calculates the formula wheel
- *
  * @author Peter Rutschmann
  * @version 13.09.2018
  */
@@ -48,6 +47,7 @@ public class Calculator {
         if (power == 0.0) {
             calculatePower(tension, current, resistance);
         }
+        calculateCurrent(tension, resistance, power);
     }
 
     private void calculatePower(double tension, double current, double resistance) {
@@ -56,9 +56,23 @@ public class Calculator {
         }
         if (tension == 0.0) {
             power = resistance * (current * current);
-        }
-        else {
+        } else {
             power = (tension * tension) / resistance;
         }
     }
+
+    private void calculateCurrent(double tension, double resistance, double power){
+    	//Calculate
+		if(tension == 0.00){
+			current = sqrt(power / resistance);
+		}
+
+		if(resistance == 0.00){
+			current = power / tension;
+		}
+
+		if(power == 0.00) {
+            current = tension / resistance;
+        }
+	}
 }
