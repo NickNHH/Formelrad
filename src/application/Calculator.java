@@ -4,6 +4,7 @@ import static java.lang.StrictMath.sqrt;
 
 /**
  * Calculates the formula wheel
+ *
  * @author Peter Rutschmann
  * @version 13.09.2018
  */
@@ -52,7 +53,7 @@ public class Calculator {
         if (current == 0.0) {
             calculateCurrent(tension, resistance, power);
         }
-        if (resistance = 0.0) {
+        if (resistance == 0.0) {
             calculateResistance(tension, current, power);
         }
         if (tension == 0.0) {
@@ -72,17 +73,17 @@ public class Calculator {
         }
     }
 
-    private void calculateCurrent(double tension, double resistance, double power){
-		if (tension == 0.0) {
-			current = Math.sqrt(power / resistance);
-		}
-		if (resistance == 0.0) {
-			current = power / tension;
-		}
-		if (power == 0.0) {
+    private void calculateCurrent(double tension, double resistance, double power) {
+        if (tension == 0.0) {
+            current = Math.sqrt(power / resistance);
+        }
+        if (resistance == 0.0) {
+            current = power / tension;
+        }
+        if (power == 0.0) {
             current = tension / resistance;
         }
-	}
+    }
 
     private void calculateTension(double power, double current, double resistance) {
         if (power == 0.0) {
@@ -95,16 +96,15 @@ public class Calculator {
             tension = power / current;
         }
     }
-}
 
     private void calculateResistance(double tension, double current, double power) {
         if (tension == 0.0) {
             resistance = power / (current * current);
         }
-        if (current = 0.0) {
+        if (current == 0.0) {
             resistance = (tension + tension) / power;
         }
-        if (power = 0.0) {
+        if (power == 0.0) {
             resistance = tension / current;
         }
     }
