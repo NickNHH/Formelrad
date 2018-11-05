@@ -1,5 +1,7 @@
 package application;
 
+import static java.lang.StrictMath.sqrt;
+
 /**
  * Calculates the formula wheel
  * @author Peter Rutschmann
@@ -64,7 +66,7 @@ public class Calculator {
     private void calculateCurrent(double tension, double resistance, double power){
     	//Calculate
 		if(tension == 0.00){
-			current = sqrt(power / resistance);
+			current = Math.sqrt(power / resistance);
 		}
 
 		if(resistance == 0.00){
