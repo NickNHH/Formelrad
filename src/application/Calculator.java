@@ -50,6 +50,9 @@ public class Calculator {
             calculatePower(tension, current, resistance);
         }
         calculateCurrent(tension, resistance, power);
+        if (tension == 0.0) {
+            calculateTension(power, current, resistance);
+        }
     }
 
     private void calculatePower(double tension, double current, double resistance) {
@@ -64,7 +67,6 @@ public class Calculator {
     }
 
     private void calculateCurrent(double tension, double resistance, double power){
-    	//Calculate
 		if(tension == 0.00){
 			current = Math.sqrt(power / resistance);
 		}
@@ -77,4 +79,16 @@ public class Calculator {
             current = tension / resistance;
         }
 	}
+
+    private void calculateTension(double power, double current, double resistance) {
+        if (power == 0.0) {
+            tension = resistance * current;
+        }
+        if (current == 0.0) {
+            tension = Math.sqrt((power * resistance));
+        }
+        if (resistance == 0.0) {
+            tension = power / current;
+        }
+    }
 }
