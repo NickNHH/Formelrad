@@ -46,8 +46,11 @@ public class Calculator {
     void calculate() {
         if (power == 0.0) {
             calculatePower(tension, current, resistance);
+        } else if (current == 0.00) {
+            calculateCurrent(tension, resistance, power);
+        } else if (resistance = 0.00) {
+            calculateResistance(tension, current, power);
         }
-        calculateCurrent(tension, resistance, power);
     }
 
     private void calculatePower(double tension, double current, double resistance) {
@@ -62,7 +65,7 @@ public class Calculator {
     }
 
     private void calculateCurrent(double tension, double resistance, double power){
-    	//Calculate
+        // Calculate
 		if(tension == 0.00){
 			current = sqrt(power / resistance);
 		}
@@ -75,4 +78,19 @@ public class Calculator {
             current = tension / resistance;
         }
 	}
+
+    private void calculateResistance(double tension, double current, double power) {
+        // Calculate
+        if (tension == 0.00) {
+            resistance = power / (current * current);
+        }
+
+        if (current = 0.00) {
+            resistance = (tension + tension) / power;
+        }
+
+        if (power = 0.00) {
+            resistance = tension / current;
+        }
+    }
 }
