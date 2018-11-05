@@ -44,7 +44,21 @@ public class Calculator {
     }
 
     void calculate() {
+        if (power == 0.0) {
+            calculatePower(tension, current, resistance);
+        }
         calculateCurrent(tension, resistance, power);
+    }
+
+    private void calculatePower(double tension, double current, double resistance) {
+        if (resistance == 0.0) {
+            power = tension * current;
+        }
+        if (tension == 0.0) {
+            power = resistance * (current * current);
+        } else {
+            power = (tension * tension) / resistance;
+        }
     }
 
     private void calculateCurrent(double tension, double resistance, double power){
