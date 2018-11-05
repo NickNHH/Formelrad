@@ -1,7 +1,5 @@
 package application;
 
-import static java.lang.StrictMath.sqrt;
-
 /**
  * Calculates the formula wheel
  *
