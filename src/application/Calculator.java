@@ -45,16 +45,16 @@ public class Calculator {
     }
 
     void calculate() {
-        if (power == 0.0) {
+        if (canCalculatePower()) {
             calculatePower(tension, current, resistance);
         }
-        if (current == 0.0) {
+        if (canCalculateCurrent()) {
             calculateCurrent(tension, resistance, power);
         }
-        if (resistance == 0.0) {
+        if (canCalculateResistance()) {
             calculateResistance(tension, current, power);
         }
-        if (tension == 0.0) {
+        if (canCalculateTension()) {
             calculateTension(power, current, resistance);
         }
     }
@@ -105,5 +105,61 @@ public class Calculator {
         if (power == 0.0) {
             resistance = tension / current;
         }
+    }
+
+    private boolean canCalculatePower() {
+        boolean output = false;
+        if (getTension() != 0.0 && getResistance() != 0.0) {
+            output = true;
+        }
+        if (getTension() != 0.0 && getCurrent() != 0.0) {
+            output = true;
+        }
+        if (getResistance() != 0.0 && getCurrent() != 0.0) {
+            output = true;
+        }
+        return output;
+    }
+
+    private boolean canCalculateCurrent() {
+        boolean output = false;
+        if (getPower() != 0.0 && getResistance() != 0.0) {
+            output = true;
+        }
+        if (getPower() != 0.0 && getCurrent() != 0.0) {
+            output = true;
+        }
+        if (getResistance() != 0.0 && getCurrent() != 0.0) {
+            output = true;
+        }
+        return output;
+    }
+
+    private boolean canCalculateResistance() {
+        boolean output = false;
+        if (getTension() != 0.0 && getPower() != 0.0) {
+            output = true;
+        }
+        if (getTension() != 0.0 && getCurrent() != 0.0) {
+            output = true;
+        }
+        if (getPower() != 0.0 && getCurrent() != 0.0) {
+            output = true;
+        }
+        return output;
+    }
+
+    private boolean canCalculateTension() {
+        boolean output = false;
+        if (getCurrent() != 0.0 && getResistance() != 0.0) {
+            output = true;
+        }
+        if (getPower() != 0.0 && getCurrent() != 0.0) {
+            output = true;
+        }
+        if (getResistance() != 0.0 && getPower() != 0.0) {
+            output = true;
+        }
+        return output;
     }
 }
