@@ -46,20 +46,20 @@ public class Calculator {
 
     void calculate() {
         if (canCalculatePower()) {
-            calculatePower(tension, current, resistance);
+            calculatePower();
         }
         if (canCalculateCurrent()) {
-            calculateCurrent(tension, resistance, power);
+            calculateCurrent();
         }
         if (canCalculateResistance()) {
-            calculateResistance(tension, current, power);
+            calculateResistance();
         }
         if (canCalculateTension()) {
-            calculateTension(power, current, resistance);
+            calculateTension();
         }
     }
 
-    private void calculatePower(double tension, double current, double resistance) {
+    private void calculatePower() {
         if (tension != 0.0 && current != 0.0) {
             power = tension * current;
         }
@@ -71,7 +71,7 @@ public class Calculator {
         }
     }
 
-    private void calculateCurrent(double tension, double resistance, double power) {
+    private void calculateCurrent() {
         if (power != 0.0 && resistance != 0.0) {
             current = Math.sqrt(power / resistance);
         }
@@ -83,7 +83,7 @@ public class Calculator {
         }
     }
 
-    private void calculateTension(double power, double current, double resistance) {
+    private void calculateTension() {
         if (resistance != 0.0 && current != 0.0) {
             tension = resistance * current;
         }
@@ -95,7 +95,7 @@ public class Calculator {
         }
     }
 
-    private void calculateResistance(double tension, double current, double power) {
+    private void calculateResistance() {
         if (power != 0.0 && current != 0.0) {
             resistance = power / (current * current);
         }
