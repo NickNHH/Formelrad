@@ -60,49 +60,49 @@ public class Calculator {
     }
 
     private void calculatePower(double tension, double current, double resistance) {
-        if (resistance == 0.0) {
+        if (tension != 0.0 && current != 0.0) {
             power = tension * current;
         }
-        if (tension == 0.0) {
+        if (resistance != 0.0 && current != 0.0) {
             power = resistance * (current * current);
         }
-        if (current == 0.0) {
+        if (tension != 0.0 && resistance != 0.0) {
             power = (tension * tension) / resistance;
         }
     }
 
     private void calculateCurrent(double tension, double resistance, double power) {
-        if (tension == 0.0) {
+        if (power != 0.0 && resistance != 0.0) {
             current = Math.sqrt(power / resistance);
         }
-        if (resistance == 0.0) {
+        if (power != 0.0 && tension != 0.0) {
             current = power / tension;
         }
-        if (power == 0.0) {
+        if (tension != 0.0 && resistance != 0.0) {
             current = tension / resistance;
         }
     }
 
     private void calculateTension(double power, double current, double resistance) {
-        if (power == 0.0) {
+        if (resistance != 0.0 && current != 0.0) {
             tension = resistance * current;
         }
-        if (current == 0.0) {
+        if (power != 0.0 && resistance != 0.0) {
             tension = Math.sqrt((power * resistance));
         }
-        if (resistance == 0.0) {
+        if (power != 0.0 && current != 0.0) {
             tension = power / current;
         }
     }
 
     private void calculateResistance(double tension, double current, double power) {
-        if (tension == 0.0) {
+        if (power != 0.0 && current != 0.0) {
             resistance = power / (current * current);
         }
-        if (current == 0.0) {
+        if (tension != 0.0 && power != 0.0) {
             resistance = (tension + tension) / power;
         }
-        if (power == 0.0) {
+        if (tension != 0.0 && current != 0.0) {
             resistance = tension / current;
         }
     }
