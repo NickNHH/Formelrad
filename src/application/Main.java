@@ -1,6 +1,7 @@
 package application;
 
 import java.io.FileInputStream;
+import java.util.ArrayList;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -19,6 +20,8 @@ import javafx.scene.text.Font;
  * @version 22.10.2018
  */
 public class Main extends Application {
+    ArrayList<TextField> textFields;
+
 	@Override
 	public void start(Stage primaryStage) {
 		try {
@@ -84,18 +87,24 @@ public class Main extends Application {
 				double tension = 0.0;
 				double current = 0.0;
 				double resistance = 0.0;
-				if(!tfPower.getText().isEmpty()) {
-					power = Double.parseDouble(tfPower.getText());
-				}
-				if(!tfTension.getText().isEmpty()) {
-					tension = Double.parseDouble(tfTension.getText());
-				}
-				if(!tfCurrent.getText().isEmpty()) {
-					current = Double.parseDouble(tfCurrent.getText());
-				}
-				if(!tfResistance.getText().isEmpty()) {
-					resistance = Double.parseDouble(tfResistance.getText());
-				}
+				initialiseArrayList(tfPower, tfCurrent, tfResistance, tfTension);
+				if (legalAmountOfArguments(textFields)) {
+                    if (!tfPower.getText().isEmpty()) {
+                        power = Double.parseDouble(tfPower.getText());
+                    }
+                    if (!tfTension.getText().isEmpty()) {
+                        tension = Double.parseDouble(tfTension.getText());
+                    }
+                    if (!tfCurrent.getText().isEmpty()) {
+                        current = Double.parseDouble(tfCurrent.getText());
+                    }
+                    if (!tfResistance.getText().isEmpty()) {
+                        resistance = Double.parseDouble(tfResistance.getText());
+                    }
+                }
+                else {
+
+                }
 				Calculator myCalculator = new Calculator(
 						power, tension, current, resistance);
 				System.out.print("Vorher:  ");
@@ -120,7 +129,27 @@ public class Main extends Application {
 		}
 	}
 
-	public static void main(String[] args) {
+    private boolean legalAmountOfArguments(ArrayList<TextField> textFields) {
+        int amount = 0;
+
+        for (TextField textField : textFields) {
+            if (!textField.getText().isEmpty()) {
+                amount++;
+            }
+        }
+        return amount <= 2;
+	}
+
+	private void initialiseArrayList(TextField tfPower, TextField tfCurrent, TextField tfResistance, TextField tfTension) {
+	    textFields = new ArrayList<>();
+
+	    textFields.add(tfPower);
+	    textFields.add(tfCurrent);
+	    textFields.add(tfResistance);
+	    textFields.add(tfTension);
+    }
+
+    public static void main(String[] args) {
 		launch(args);
 	}
 }
