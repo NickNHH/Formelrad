@@ -101,22 +101,23 @@ public class Main extends Application {
                     if (!tfResistance.getText().isEmpty()) {
                         resistance = Double.parseDouble(tfResistance.getText());
                     }
+
+                    Calculator myCalculator = new Calculator(
+                            power, tension, current, resistance);
+                    System.out.print("Vorher:  ");
+                    System.out.println(myCalculator.toString());
+                    myCalculator.calculate();
+                    System.out.print("Nachher: ");
+                    System.out.println(myCalculator.toString());
+
+                    tfPower.setText(Double.toString(myCalculator.getPower()));
+                    tfTension.setText(Double.toString(myCalculator.getTension()));
+                    tfCurrent.setText(Double.toString(myCalculator.getCurrent()));
+                    tfResistance.setText(Double.toString(myCalculator.getResistance()));
                 }
                 else {
-
+                    giveWarning();
                 }
-				Calculator myCalculator = new Calculator(
-						power, tension, current, resistance);
-				System.out.print("Vorher:  ");
-				System.out.println(myCalculator.toString());
-				myCalculator.calculate();
-				System.out.print("Nachher: ");
-				System.out.println(myCalculator.toString());
-					
-				tfPower.setText(Double.toString(myCalculator.getPower()));
-				tfTension.setText(Double.toString(myCalculator.getTension()));
-				tfCurrent.setText(Double.toString(myCalculator.getCurrent()));
-				tfResistance.setText(Double.toString(myCalculator.getResistance()));
 			});
 
 			Scene scene = new Scene(root, 330, 490);
@@ -147,6 +148,12 @@ public class Main extends Application {
 	    textFields.add(tfCurrent);
 	    textFields.add(tfResistance);
 	    textFields.add(tfTension);
+    }
+
+    private void giveWarning() {
+	    for (TextField textField : textFields) {
+	        textField.setText("Error: More than two arguments given.");
+        }
     }
 
     public static void main(String[] args) {
