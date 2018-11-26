@@ -53,7 +53,7 @@ public class Main extends Application {
 			TextField tfTension = new TextField();
 			tfTension.relocate(100, 325);
 			tfTension.setFont(Font.font("Verdana", 15));
-			tfPower.setStyle("-fx-text-fill: red;");
+			tfTension.setStyle("-fx-text-fill: red;");
 			root.getChildren().add(tfTension);
 
 			Label lbCurrent = new Label("Strom:");
@@ -64,7 +64,7 @@ public class Main extends Application {
 			TextField tfCurrent = new TextField();
 			tfCurrent.relocate(100, 365);
 			tfCurrent.setFont(Font.font("Verdana", 15));
-			tfPower.setStyle("-fx-text-fill: red;");
+			tfCurrent.setStyle("-fx-text-fill: red;");
 			root.getChildren().add(tfCurrent);
 
 			Label lbResistance = new Label("Widerstand:");
@@ -75,7 +75,7 @@ public class Main extends Application {
 			TextField tfResistance = new TextField();
 			tfResistance.relocate(100, 405);
 			tfResistance.setFont(Font.font("Verdana", 15));
-			tfPower.setStyle("-fx-text-fill: red;");
+			tfResistance.setStyle("-fx-text-fill: red;");
 			root.getChildren().add(tfResistance);
 
 			Button btCalculate = new Button();
