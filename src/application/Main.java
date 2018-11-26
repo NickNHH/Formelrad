@@ -1,13 +1,12 @@
 package application;
 
 import java.io.FileInputStream;
+import java.util.ArrayList;
 
 import javafx.application.Application;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
@@ -19,6 +18,8 @@ import javafx.scene.text.Font;
  * @version 22.10.2018
  */
 public class Main extends Application {
+    private ArrayList<TextField> textFields;
+
 	@Override
 	public void start(Stage primaryStage) {
 		try {
@@ -84,30 +85,37 @@ public class Main extends Application {
 				double tension = 0.0;
 				double current = 0.0;
 				double resistance = 0.0;
-				if(!tfPower.getText().isEmpty()) {
-					power = Double.parseDouble(tfPower.getText());
-				}
-				if(!tfTension.getText().isEmpty()) {
-					tension = Double.parseDouble(tfTension.getText());
-				}
-				if(!tfCurrent.getText().isEmpty()) {
-					current = Double.parseDouble(tfCurrent.getText());
-				}
-				if(!tfResistance.getText().isEmpty()) {
-					resistance = Double.parseDouble(tfResistance.getText());
-				}
-				Calculator myCalculator = new Calculator(
-						power, tension, current, resistance);
-				System.out.print("Vorher:  ");
-				System.out.println(myCalculator.toString());
-				myCalculator.calculate();
-				System.out.print("Nachher: ");
-				System.out.println(myCalculator.toString());
-					
-				tfPower.setText(Double.toString(myCalculator.getPower()));
-				tfTension.setText(Double.toString(myCalculator.getTension()));
-				tfCurrent.setText(Double.toString(myCalculator.getCurrent()));
-				tfResistance.setText(Double.toString(myCalculator.getResistance()));
+				initialiseArrayList(tfPower, tfCurrent, tfResistance, tfTension);
+				if (isLegalAmount()) {
+                    if (!tfPower.getText().isEmpty()) {
+                        power = Double.parseDouble(tfPower.getText());
+                    }
+                    if (!tfTension.getText().isEmpty()) {
+                        tension = Double.parseDouble(tfTension.getText());
+                    }
+                    if (!tfCurrent.getText().isEmpty()) {
+                        current = Double.parseDouble(tfCurrent.getText());
+                    }
+                    if (!tfResistance.getText().isEmpty()) {
+                        resistance = Double.parseDouble(tfResistance.getText());
+                    }
+
+                    Calculator myCalculator = new Calculator(
+                            power, tension, current, resistance);
+                    System.out.print("Vorher:  ");
+                    System.out.println(myCalculator.toString());
+                    myCalculator.calculate();
+                    System.out.print("Nachher: ");
+                    System.out.println(myCalculator.toString());
+
+                    tfPower.setText(Double.toString(myCalculator.getPower()));
+                    tfTension.setText(Double.toString(myCalculator.getTension()));
+                    tfCurrent.setText(Double.toString(myCalculator.getCurrent()));
+                    tfResistance.setText(Double.toString(myCalculator.getResistance()));
+                }
+                else {
+                    giveWarning();
+                }
 			});
 
 			Scene scene = new Scene(root, 330, 490);
@@ -120,7 +128,37 @@ public class Main extends Application {
 		}
 	}
 
-	public static void main(String[] args) {
+    private boolean isLegalAmount() {
+        return getAmountOfLegalArguments() <= 2;
+	}
+
+	private int getAmountOfLegalArguments() {
+		int amount = 0;
+
+		for (TextField textField : textFields) {
+			if (!textField.getText().isEmpty()) {
+				amount++;
+			}
+		}
+		return amount;
+	}
+
+	private void initialiseArrayList(TextField tfPower, TextField tfCurrent, TextField tfResistance, TextField tfTension) {
+	    textFields = new ArrayList<>();
+
+	    textFields.add(tfPower);
+	    textFields.add(tfCurrent);
+	    textFields.add(tfResistance);
+	    textFields.add(tfTension);
+    }
+
+    private void giveWarning() {
+		//Create alert
+		Alert alert = new Alert(Alert.AlertType.ERROR, "Too many given arguments (" + getAmountOfLegalArguments() + "/2)", ButtonType.OK);
+		alert.showAndWait();
+    }
+
+    public static void main(String[] args) {
 		launch(args);
 	}
 }
