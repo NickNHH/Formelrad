@@ -4,11 +4,9 @@ import java.io.FileInputStream;
 import java.util.ArrayList;
 
 import javafx.application.Application;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
@@ -20,7 +18,7 @@ import javafx.scene.text.Font;
  * @version 22.10.2018
  */
 public class Main extends Application {
-    ArrayList<TextField> textFields;
+    private ArrayList<TextField> textFields;
 
 	@Override
 	public void start(Stage primaryStage) {
@@ -88,7 +86,7 @@ public class Main extends Application {
 				double current = 0.0;
 				double resistance = 0.0;
 				initialiseArrayList(tfPower, tfCurrent, tfResistance, tfTension);
-				if (legalAmountOfArguments(textFields)) {
+				if (isLegalAmount()) {
                     if (!tfPower.getText().isEmpty()) {
                         power = Double.parseDouble(tfPower.getText());
                     }
@@ -130,15 +128,19 @@ public class Main extends Application {
 		}
 	}
 
-    private boolean legalAmountOfArguments(ArrayList<TextField> textFields) {
-        int amount = 0;
+    private boolean isLegalAmount() {
+        return getAmountOfLegalArguments() <= 2;
+	}
 
-        for (TextField textField : textFields) {
-            if (!textField.getText().isEmpty()) {
-                amount++;
-            }
-        }
-        return amount <= 2;
+	private int getAmountOfLegalArguments() {
+		int amount = 0;
+
+		for (TextField textField : textFields) {
+			if (!textField.getText().isEmpty()) {
+				amount++;
+			}
+		}
+		return amount;
 	}
 
 	private void initialiseArrayList(TextField tfPower, TextField tfCurrent, TextField tfResistance, TextField tfTension) {
@@ -151,9 +153,9 @@ public class Main extends Application {
     }
 
     private void giveWarning() {
-	    for (TextField textField : textFields) {
-	        textField.setText("Error: More than two arguments given.");
-        }
+		//Create alert
+		Alert alert = new Alert(Alert.AlertType.ERROR, "Too many given arguments (" + getAmountOfLegalArguments() + "/2)", ButtonType.OK);
+		alert.showAndWait();
     }
 
     public static void main(String[] args) {
