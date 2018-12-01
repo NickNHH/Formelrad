@@ -112,6 +112,10 @@ public class Main extends Application {
 				tfTension.setText(Double.toString(myCalculator.getTension()));
 				tfCurrent.setText(Double.toString(myCalculator.getCurrent()));
 				tfResistance.setText(Double.toString(myCalculator.getResistance()));
+				System.out.println();
+				System.out.println("-------------------------------------------------------------");
+				System.out.println();
+				System.out.println();
 			});
 
 			Scene scene = new Scene(root, 330, 490);

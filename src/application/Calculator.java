@@ -62,48 +62,74 @@ public class Calculator {
     private void calculatePower() {
         if (tension != 0.0 && current != 0.0) {
             power = tension * current;
+            System.out.println("Power = " + tension + " + " + current);
+            System.out.println("Power = " + power);
         }
         if (resistance != 0.0 && current != 0.0) {
             power = resistance * (current * current);
+            System.out.println("Power = " + resistance + " * (" + current + " * " + current + ")");
+            System.out.println("Power = " + power);
         }
         if (tension != 0.0 && resistance != 0.0) {
             power = (tension * tension) / resistance;
+            System.out.println("Power = " + "(" + tension + " * " + tension + ") / " + resistance);
+            System.out.println("Power = " + power);
         }
     }
 
     private void calculateCurrent() {
         if (power != 0.0 && resistance != 0.0) {
             current = Math.sqrt(power / resistance);
+            System.out.println("Current = " + "square root (" + power + " / " + resistance + ")");
+            System.out.println("Current = " + current);
         }
         if (power != 0.0 && tension != 0.0) {
             current = power / tension;
+            System.out.println("Current = " + power + " / " + tension);
+            System.out.println("Current = " + current);
         }
         if (tension != 0.0 && resistance != 0.0) {
             current = tension / resistance;
+            System.out.println("Current = " + tension + " / " + resistance);
+            System.out.println("Current = " + current);
         }
     }
 
     private void calculateTension() {
         if (resistance != 0.0 && current != 0.0) {
             tension = resistance * current;
+            System.out.println("Tension = " + resistance + " * " + current);
+            System.out.println("Tension = " + tension);
         }
+
         if (power != 0.0 && resistance != 0.0) {
             tension = Math.sqrt((power * resistance));
+            System.out.println("Tension = " + "square root (" + power + " * " + resistance + ")");
+            System.out.println("Tension = " + tension);
         }
+
         if (power != 0.0 && current != 0.0) {
             tension = power / current;
+            System.out.println("Tension = " + power + " / " + current);
+            System.out.println("Tension = " + tension);
         }
     }
 
     private void calculateResistance() {
         if (power != 0.0 && current != 0.0) {
             resistance = power / (current * current);
+            System.out.println("Resistance = " + power + " / (" + current + " * " + current ")");
+            System.out.println("Resistance = " + resistance);
         }
         if (tension != 0.0 && power != 0.0) {
             resistance = (tension + tension) / power;
+            System.out.println("Resistance = (" + tension + "+" + tension + ") / " + power);
+            System.out.println("Resistance = " + resistance);
         }
         if (tension != 0.0 && current != 0.0) {
             resistance = tension / current;
+            System.out.println("Resistance = " + tension " / " + current);
+            System.out.println("Resistance = " + resistance);
         }
     }
 
