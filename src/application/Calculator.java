@@ -118,7 +118,7 @@ public class Calculator {
     private void calculateResistance() {
         if (power != 0.0 && current != 0.0) {
             resistance = power / (current * current);
-            System.out.println("Resistance = " + power + " / (" + current + " * " + current ")");
+            System.out.println("Resistance = " + power + " / (" + current + " * " + current + ")");
             System.out.println("Resistance = " + resistance);
         }
         if (tension != 0.0 && power != 0.0) {
@@ -128,7 +128,7 @@ public class Calculator {
         }
         if (tension != 0.0 && current != 0.0) {
             resistance = tension / current;
-            System.out.println("Resistance = " + tension " / " + current);
+            System.out.println("Resistance = " + tension + " / " + current);
             System.out.println("Resistance = " + resistance);
         }
     }
