@@ -207,4 +207,20 @@ public class Calculator {
         }
         return output;
     }
+
+    boolean powerChanged() {
+        return power == newPower;
+    }
+
+    boolean currentChanged() {
+        return current == newCurrent;
+    }
+
+    boolean tensionChanged() {
+        return tension == newCurrent;
+    }
+
+    boolean resistanceChanged() {
+        return resistance == newResistance;
+    }
 }
