@@ -7,6 +7,9 @@ import javafx.application.Application;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
@@ -43,7 +46,6 @@ public class Main extends Application {
 			TextField tfPower = new TextField();
 			tfPower.relocate(100, 285);
 			tfPower.setFont(Font.font("Verdana", 15));
-			tfPower.setStyle("-fx-text-fill: red;");
 			root.getChildren().add(tfPower);
 
 			Label lbTension = new Label("Spannung:");
@@ -54,7 +56,6 @@ public class Main extends Application {
 			TextField tfTension = new TextField();
 			tfTension.relocate(100, 325);
 			tfTension.setFont(Font.font("Verdana", 15));
-			tfTension.setStyle("-fx-text-fill: red;");
 			root.getChildren().add(tfTension);
 
 			Label lbCurrent = new Label("Strom:");
@@ -65,7 +66,6 @@ public class Main extends Application {
 			TextField tfCurrent = new TextField();
 			tfCurrent.relocate(100, 365);
 			tfCurrent.setFont(Font.font("Verdana", 15));
-			tfCurrent.setStyle("-fx-text-fill: red;");
 			root.getChildren().add(tfCurrent);
 
 			Label lbResistance = new Label("Widerstand:");
@@ -76,7 +76,6 @@ public class Main extends Application {
 			TextField tfResistance = new TextField();
 			tfResistance.relocate(100, 405);
 			tfResistance.setFont(Font.font("Verdana", 15));
-			tfResistance.setStyle("-fx-text-fill: red;");
 			root.getChildren().add(tfResistance);
 
 			Button btCalculate = new Button();
@@ -162,7 +161,29 @@ public class Main extends Application {
 		alert.showAndWait();
     }
 
-    public static void main(String[] args) {
+	private void inkResults(Calculator myCalculator, TextField tfCurrent, TextField tfPower, TextField tfResistance, TextField tfTension) {
+		if (myCalculator.powerChanged()) {
+			tfPower.setStyle("-fx-text-fill: red;");
+		}
+		if (myCalculator.currentChanged()) {
+			tfCurrent.setStyle("-fx-text-fill: red;");
+		}
+		if (myCalculator.tensionChanged()) {
+			tfTension.setStyle("-fx-text-fill: red;");
+		}
+		if (myCalculator.resistanceChanged()) {
+			tfResistance.setStyle("-fx-text-fill: red;");
+		}
+	}
+
+	private void resetColors(TextField tfCurrent, TextField tfPower, TextField tfResistance, TextField tfTension) {
+		tfCurrent.setStyle("-fx-text-fill: black;");
+		tfPower.setStyle("-fx-text-fill: black;");
+		tfResistance.setStyle("-fx-text-fill: black;");
+		tfTension.setStyle("-fx-text-fill: black;");
+	}
+
+	public static void main(String[] args) {
 		launch(args);
 	}
 }
