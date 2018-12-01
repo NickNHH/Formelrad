@@ -147,10 +147,10 @@ public class Calculator {
         if (getPower() != 0.0 && getResistance() != 0.0) {
             output = true;
         }
-        if (getPower() != 0.0 && getCurrent() != 0.0) {
+        if (getPower() != 0.0 && getTension() != 0.0) {
             output = true;
         }
-        if (getResistance() != 0.0 && getCurrent() != 0.0) {
+        if (getResistance() != 0.0 && getTension() != 0.0) {
             output = true;
         }
         return output;
