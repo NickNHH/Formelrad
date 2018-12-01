@@ -111,6 +111,8 @@ public class Main extends Application {
                     System.out.print("Nachher: ");
                     System.out.println(myCalculator.toString());
 
+                    resetColors();
+                    inkResults(myCalculator);
                     tfPower.setText(Double.toString(myCalculator.getPower()));
                     tfTension.setText(Double.toString(myCalculator.getTension()));
                     tfCurrent.setText(Double.toString(myCalculator.getCurrent()));
@@ -161,26 +163,25 @@ public class Main extends Application {
 		alert.showAndWait();
     }
 
-	private void inkResults(Calculator myCalculator, TextField tfCurrent, TextField tfPower, TextField tfResistance, TextField tfTension) {
+	private void inkResults(Calculator myCalculator) {
 		if (myCalculator.powerChanged()) {
-			tfPower.setStyle("-fx-text-fill: red;");
+			textFields.get(0).setStyle("-fx-text-fill: red;");
 		}
 		if (myCalculator.currentChanged()) {
-			tfCurrent.setStyle("-fx-text-fill: red;");
+			textFields.get(1).setStyle("-fx-text-fill: red;");
 		}
 		if (myCalculator.tensionChanged()) {
-			tfTension.setStyle("-fx-text-fill: red;");
+			textFields.get(3).setStyle("-fx-text-fill: red;");
 		}
 		if (myCalculator.resistanceChanged()) {
-			tfResistance.setStyle("-fx-text-fill: red;");
+			textFields.get(2).setStyle("-fx-text-fill: red;");
 		}
 	}
 
-	private void resetColors(TextField tfCurrent, TextField tfPower, TextField tfResistance, TextField tfTension) {
-		tfCurrent.setStyle("-fx-text-fill: black;");
-		tfPower.setStyle("-fx-text-fill: black;");
-		tfResistance.setStyle("-fx-text-fill: black;");
-		tfTension.setStyle("-fx-text-fill: black;");
+	private void resetColors() {
+		for (TextField textField : textFields) {
+		    textField.setStyle("-fx-text-fill: black;");
+        }
 	}
 
 	public static void main(String[] args) {
